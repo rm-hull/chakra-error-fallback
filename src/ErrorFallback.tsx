@@ -13,11 +13,13 @@ import { Cause } from "./Cause";
 interface ErrorFallbackProps {
   title?: string;
   error: Error;
+  expandStackTrace?: boolean;
 }
 
-export default function ErrorFallback({
+export function ErrorFallback({
   error,
   title = "Something went wrong",
+  expandStackTrace,
 }: ErrorFallbackProps) {
   const { stack, loading } = useReadableStack(error);
 
@@ -37,7 +39,11 @@ export default function ErrorFallback({
       </Alert.Root>
 
       <Container m={5}>
-        <Accordion.Root collapsible variant="plain">
+        <Accordion.Root
+          collapsible
+          variant="plain"
+          defaultValue={expandStackTrace ? ["stack"] : undefined}
+        >
           <Accordion.Item value="stack">
             <Accordion.ItemTrigger>
               <Heading size="sm">Stack trace</Heading>

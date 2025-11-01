@@ -1,8 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { render } from "./test/render";
-import ErrorFallback from "./ErrorFallback";
-import { vi } from "vitest";
+import { ErrorFallback } from "./ErrorFallback";
 import { useReadableStack } from "./useReadableStack";
 
 // Mock the useReadableStack hook
@@ -15,7 +14,10 @@ const mockUseReadableStack = useReadableStack as vi.Mock;
 describe("ErrorFallback", () => {
   beforeEach(() => {
     // Reset mock before each test
-    mockUseReadableStack.mockReturnValue({ stack: "Mock stack trace", loading: false });
+    mockUseReadableStack.mockReturnValue({
+      stack: "Mock stack trace",
+      loading: false,
+    });
   });
 
   it("renders with a default title and error message", () => {
@@ -49,7 +51,9 @@ describe("ErrorFallback", () => {
 
     const trigger = screen.getByText("Stack trace");
     const accordionItem = trigger.closest("[data-part='item']");
-    const stackTraceContent = accordionItem?.querySelector("[data-part='item-content']");
+    const stackTraceContent = accordionItem?.querySelector(
+      "[data-part='item-content']"
+    );
 
     // Stack trace content should be closed initially
     expect(stackTraceContent).toHaveAttribute("data-state", "closed");
@@ -58,7 +62,9 @@ describe("ErrorFallback", () => {
     await userEvent.click(trigger);
 
     // Stack trace content should now be open after waiting
-    await waitFor(() => expect(stackTraceContent).toHaveAttribute("data-state", "open"));
+    await waitFor(() =>
+      expect(stackTraceContent).toHaveAttribute("data-state", "open")
+    );
     expect(screen.getByText("Mock stack trace")).toBeInTheDocument();
   });
 
