@@ -35,6 +35,14 @@ The project is written in TypeScript and uses `vitest` for testing.
 *   **`yarn lint`**: Lints the codebase using ESLint.
 *   **`yarn release`**: Builds the project and publishes it to npm.
 
+## Storybook
+
+Storybook is used for developing and showcasing UI components in isolation. It provides a sandbox environment to build UI components without needing to run the entire application.
+
+### Commands
+
+*   **`yarn storybook`**: Starts the Storybook development server.
+
 ## Development Conventions
 
 *   **Styling:** The project uses Chakra UI for styling.
