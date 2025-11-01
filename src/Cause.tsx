@@ -2,14 +2,10 @@ import { VStack, HStack, Box } from "@chakra-ui/react";
 import { BsArrowReturnRight } from "react-icons/bs";
 
 interface CauseProps {
-  error?: Error;
+  error: Error;
 }
 
 export function Cause({ error }: CauseProps) {
-  if (error === undefined) {
-    return null;
-  }
-
   return (
     <VStack alignItems="start" gap={0.5}>
       {error.message}

@@ -13,7 +13,10 @@
     "skipLibCheck": true,
     "strict": true,
     "outDir": "dist",
-    "types": ["react", "vitest/globals"]
+    "types": ["react", "vitest/globals"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
