@@ -68,6 +68,15 @@ describe("ErrorFallback", () => {
     expect(screen.getByText("Mock stack trace")).toBeInTheDocument();
   });
 
+  it("displays the stack trace immediately when expandStackTrace is true", async () => {
+    const error = new Error("Expanded Stack Trace Error");
+    render(<ErrorFallback error={error} expandStackTrace={true} />);
+
+    await waitFor(() => {
+      expect(screen.getByText("Mock stack trace")).toBeInTheDocument();
+    });
+  });
+
   it("renders the Cause component with the provided error", () => {
     const error = new Error("Error for Cause Component");
     render(<ErrorFallback error={error} />);

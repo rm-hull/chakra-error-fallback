@@ -17,4 +17,7 @@ export default defineConfig({
       exclude: ["src/**/*.spec.{ts,tsx}", "src/test/**", "*.stories.tsx"],
     },
   },
+  build: {
+    sourcemap: true,
+  },
 });

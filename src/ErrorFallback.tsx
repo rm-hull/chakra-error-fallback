@@ -2,13 +2,13 @@ import { useReadableStack } from "./useReadableStack";
 import {
   Accordion,
   Alert,
-  Code,
   Container,
   Heading,
   Span,
   Strong,
 } from "@chakra-ui/react";
 import { Cause } from "./Cause";
+import { StackTrace } from "./StackTrace";
 
 interface ErrorFallbackProps {
   title?: string;
@@ -51,9 +51,7 @@ export function ErrorFallback({
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               <Accordion.ItemBody>
-                <Code background="none">
-                  <pre>{stack}</pre>
-                </Code>
+                <StackTrace details={stack} />
               </Accordion.ItemBody>
             </Accordion.ItemContent>
           </Accordion.Item>

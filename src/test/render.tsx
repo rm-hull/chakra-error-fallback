@@ -1,11 +1,11 @@
 import { render as rtlRender } from "@testing-library/react";
 import { PropsWithChildren, ReactNode } from "react";
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { Provider } from "@/components/ui/provider";
 
 export function render(ui: ReactNode) {
   return rtlRender(<>{ui}</>, {
     wrapper: (props: PropsWithChildren) => (
-      <ChakraProvider value={defaultSystem}>{props.children}</ChakraProvider>
+      <Provider>{props.children}</Provider>
     ),
   });
 }

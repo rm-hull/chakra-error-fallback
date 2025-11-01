@@ -1,4 +1,4 @@
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { Provider } from "../src/components/ui/provider";
 import type { Preview } from "@storybook/react-vite";
 
 const preview: Preview = {
@@ -13,9 +13,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ChakraProvider value={defaultSystem}>
+      <Provider>
         <Story />
-      </ChakraProvider>
+      </Provider>
     ),
   ],
 };

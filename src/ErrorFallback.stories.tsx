@@ -2,14 +2,15 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 
 import { ErrorFallback } from "./ErrorFallback";
+import { Provider } from "./components/ui/provider";
 
 const meta = {
   component: ErrorFallback,
   decorators: [
     (Story) => (
-      <ChakraProvider value={defaultSystem}>
+      <Provider>
         <Story />
-      </ChakraProvider>
+      </Provider>
     ),
   ],
 } satisfies Meta<typeof ErrorFallback>;
