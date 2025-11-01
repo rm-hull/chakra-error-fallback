@@ -1380,8 +1380,8 @@ __metadata:
     "@testing-library/user-event": "npm:^14.6.1"
     "@types/jsdom": "npm:^27.0.0"
     "@types/node": "npm:^24.9.2"
-    "@types/react": "npm:^19.2.2"
-    "@types/react-dom": "npm:^19.2.2"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
     "@vitejs/plugin-react": "npm:^5.1.0"
     "@vitest/coverage-v8": "npm:^4.0.6"
     eslint: "npm:^9.39.0"
@@ -1408,6 +1408,7 @@ __metadata:
   peerDependencies:
     "@chakra-ui/react": ">=3.28.0"
     react: ">=19.0.0"
+    react-dom: ">=19.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2015,7 +2016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^19.2.2":
+"@types/react-dom@npm:^19":
   version: 19.2.2
   resolution: "@types/react-dom@npm:19.2.2"
   peerDependencies:
@@ -2024,7 +2025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.2":
+"@types/react@npm:^19":
   version: 19.2.2
   resolution: "@types/react@npm:19.2.2"
   dependencies:
