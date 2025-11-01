@@ -34,7 +34,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 function App() {
   return (
     <ChakraProvider>
-      <ErrorBoundary fallbackRender={ErrorFallback}>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
         <YourAppComponent />
       </ErrorBoundary>
     </ChakraProvider>
