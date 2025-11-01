@@ -1,6 +1,7 @@
 # Chakra Error Fallback
 
 ![NPM Version](https://img.shields.io/npm/v/@rm-hull/chakra-error-fallback)
+![Coveralls](https://img.shields.io/coverallsCoverage/github/rm-hull/chakra-error-fallback)
 ![NPM Downloads](https://img.shields.io/npm/dm/@rm-hull/chakra-error-fallback)
 
 A type-safe React component for handling errors in Chakra UI applications, providing a fallback UI when something goes wrong.
@@ -21,9 +22,7 @@ npm install @rm-hull/chakra-error-fallback
 yarn add @rm-hull/chakra-error-fallback
 ```
 
-## Usage Examples
-
-### Basic Usage
+## Basic Usage
 
 Wrap your application or a part of it with the `ErrorBoundary` component from `react-error-boundary` and provide the `ErrorFallback` component to the `fallbackRender` prop.
 
@@ -42,6 +41,8 @@ function App() {
   );
 }
 ```
+
+See the [**Storybook**](https://www.destructuring-bind.org/chakra-error-fallback) for further usage details.
 
 ## Contributor Guidelines
 
