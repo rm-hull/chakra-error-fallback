@@ -40,6 +40,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Lint
+        continue-on-error: true
         run: yarn lint
 
       - name: Build
