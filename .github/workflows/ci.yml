@@ -12,6 +12,13 @@ on:
       - "docs/**"
       - "*.md"
 
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,6 +58,45 @@ jobs:
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         continue-on-error: true
+
+      - name: Build Storybook
+        run: yarn build-storybook
+
+      - name: Upload Storybook artifacts
+        uses: actions/upload-artifact@v5
+        with:
+          name: storybook-static
+          path: storybook-static/
+          retention-days: 7
+
+  deploy-storybook:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Download Storybook artifacts
+        uses: actions/download-artifact@v6
+        with:
+          name: storybook-static
+          path: storybook-static/
+
+      - name: Upload to Github Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./storybook-static
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   release:
     runs-on: ubuntu-latest

@@ -10,5 +10,10 @@ const config: StorybookConfig = {
   core: {
     builder: "@storybook/builder-vite",
   },
+  viteFinal: async (config) => {
+    const { mergeConfig } = await import("vite");
+
+    return mergeConfig(config, { base: "/chakra-error-fallback" });
+  },
 };
 export default config;
