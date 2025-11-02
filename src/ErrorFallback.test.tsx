@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { render } from "./test/render";
 import { ErrorFallback } from "./ErrorFallback";
 import { useReadableStack } from "./useReadableStack";
+import { vi } from "vitest";
 
 // Mock the useReadableStack hook
 vi.mock("./useReadableStack", () => ({

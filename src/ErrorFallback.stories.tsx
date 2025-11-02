@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
-
 import { ErrorFallback } from "./ErrorFallback";
 import { Provider } from "./components/ui/provider";
 
