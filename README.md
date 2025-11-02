@@ -13,6 +13,7 @@ A type-safe React component for handling errors in Chakra UI applications, provi
 - **Developer Friendly** - Provides detailed error information in development mode to help with debugging.
 - **SSR Compatible** - Works seamlessly with server-side rendering.
 - **Expanded Stack Frames** - Stack frames are automatically expanded for better readability. This feature requires `build.sourcemap=true` in your Vite configuration to function correctly.
+- **Colorized Stack Traces** - Stack traces are colorized to improve readability and quickly identify different parts of the trace.
 
 ## Quick Start
 
