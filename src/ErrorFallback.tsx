@@ -30,7 +30,6 @@ export function ErrorFallback({
         <Alert.Content>
           <Alert.Title>
             <Strong>{title}</Strong>
-            {loading && <Span color="gray.500"> (resolving source maps…)</Span>}
           </Alert.Title>
           <Alert.Description>
             <Cause error={error} />
@@ -46,7 +45,12 @@ export function ErrorFallback({
         >
           <Accordion.Item value="stack">
             <Accordion.ItemTrigger>
-              <Heading size="sm">Stack trace</Heading>
+              <Heading size="sm">
+                Stack trace
+                {loading && (
+                  <Span color="gray.500"> (resolving source maps…)</Span>
+                )}
+              </Heading>
               <Accordion.ItemIndicator />
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
