@@ -1371,7 +1371,7 @@ __metadata:
     "@changesets/cli": "npm:^2.29.7"
     "@emotion/react": "npm:^11.14.0"
     "@eslint/js": "npm:^9.39.1"
-    "@storybook/addon-themes": "npm:^10.0.2"
+    "@storybook/addon-themes": "npm:^10.0.3"
     "@storybook/builder-vite": "npm:^10.0.3"
     "@storybook/react-vite": "npm:^10.0.3"
     "@testing-library/dom": "npm:^10.4.1"
@@ -1671,14 +1671,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-themes@npm:^10.0.2":
-  version: 10.0.2
-  resolution: "@storybook/addon-themes@npm:10.0.2"
+"@storybook/addon-themes@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "@storybook/addon-themes@npm:10.0.3"
   dependencies:
     ts-dedent: "npm:^2.0.0"
   peerDependencies:
-    storybook: ^10.0.2
-  checksum: 10c0/1f8493f426e1bdf74718c25082c1287031dc6a8abbf9753fb683c29a9278f95d6009eee5af5133dc7e36cef32ee8c48e48c4b89fa377d661900e3745b9e26068
+    storybook: ^10.0.3
+  checksum: 10c0/83771bdf95117a105fa5fcf52400f0058b76a219ba66826a33e8fb4631ce7ac0b7683400c0f2ed101e617e9342eabcb64387a9b3666fb331415c9982ff386379
   languageName: node
   linkType: hard
 
