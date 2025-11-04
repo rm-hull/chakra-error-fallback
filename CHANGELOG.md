@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.5
+
+### Patch Changes
+
+- 55f367b: refactor: Use shiki core imports
+
 ## 0.0.4
 
 ### Patch Changes
