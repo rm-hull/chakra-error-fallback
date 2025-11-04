@@ -4,8 +4,10 @@ import {
   IconButton,
   createShikiAdapter,
 } from "@chakra-ui/react";
-import type { HighlighterGeneric, LanguageInput } from "shiki";
+import type { LanguageInput } from "shiki";
 import { useColorMode } from "./components/ui/color-mode";
+import { createHighlighterCore } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 
 const stackTraceLang: LanguageInput = [
   {
@@ -48,14 +50,16 @@ interface StackTraceProps {
   details?: string;
 }
 
-const shikiAdapter = createShikiAdapter<HighlighterGeneric<any, any>>({
-  async load() {
-    const { createHighlighter } = await import("shiki");
-    return createHighlighter({
+const shikiAdapter = createShikiAdapter({
+  load: async () =>
+    await createHighlighterCore({
+      themes: [
+        import("@shikijs/themes/vitesse-light"),
+        import("@shikijs/themes/vitesse-dark"),
+      ],
       langs: [stackTraceLang],
-      themes: ["vitesse-light", "vitesse-dark"],
-    });
-  },
+      engine: createJavaScriptRegexEngine(),
+    }),
   theme: "vitesse-light",
 });
 
