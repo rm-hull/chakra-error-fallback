@@ -30,6 +30,9 @@ updates:
         patterns:
           - "jsdom"
           - "@types/jsdom"
+      storybook:
+        patterns:
+          - "*storybook*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
