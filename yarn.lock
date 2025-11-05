@@ -1387,7 +1387,7 @@ __metadata:
     eslint: "npm:^9.39.1"
     eslint-plugin-react-hooks: "npm:^7.0.1"
     eslint-plugin-react-refresh: "npm:^0.4.24"
-    eslint-plugin-storybook: "npm:^10.0.3"
+    eslint-plugin-storybook: "npm:^10.0.4"
     globals: "npm:^16.5.0"
     jsdom: "npm:^27.1.0"
     next-themes: "npm:^0.4.6"
@@ -4288,15 +4288,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:^10.0.3":
-  version: 10.0.3
-  resolution: "eslint-plugin-storybook@npm:10.0.3"
+"eslint-plugin-storybook@npm:^10.0.4":
+  version: 10.0.4
+  resolution: "eslint-plugin-storybook@npm:10.0.4"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.8.1"
   peerDependencies:
     eslint: ">=8"
-    storybook: ^10.0.3
-  checksum: 10c0/f371668fe55e6d1f65a79e2d08902ca83aa175a643309fceea289b9420877b4a1753d2d42dcf6240e39e28700b0e4c86e8b1b9dc5a7b1ad95e9b5ce95a8da7ec
+    storybook: ^10.0.4
+  checksum: 10c0/a2d486a6e45d1ce731333c439b51fc44b4a9292e8c0bca914534dab11cd37a3c25c62e8cbb1bb3b35e5e8b87d6ff2c7d8256c4f89a34c444138c4c738c52e1fc
   languageName: node
   linkType: hard
 
