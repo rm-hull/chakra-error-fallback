@@ -33,6 +33,9 @@ updates:
       storybook:
         patterns:
           - "*storybook*"
+      chakra:
+        patterns:
+          - "@chakra-ui/*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
