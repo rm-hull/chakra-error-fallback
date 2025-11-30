@@ -24,8 +24,14 @@ describe("Cause", () => {
   it("handles cyclic errors gracefully", () => {
     const errorA = new Error("Error A");
     const errorB = new Error("Error B");
-    errorA.cause = errorB;
-    errorB.cause = errorA;
+    Object.defineProperty(errorA, "cause", {
+      value: errorB,
+      enumerable: false,
+    });
+    Object.defineProperty(errorB, "cause", {
+      value: errorA,
+      enumerable: false,
+    });
 
     render(<Cause error={errorA} />);
 
