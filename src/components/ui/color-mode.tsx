@@ -1,26 +1,12 @@
 "use client";
 
-import { ThemeProvider, useTheme } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import type { ThemeProviderProps } from "next-themes";
+// import { useColorMode } from "../../hooks/useColorMode"; // Removed this line
 
-export interface ColorModeProviderProps extends ThemeProviderProps {}
-
-export function ColorModeProvider(props: ColorModeProviderProps) {
+export function ColorModeProvider(props: ThemeProviderProps) {
   return (
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
   );
 }
 
-export type ColorMode = "light" | "dark";
-
-export interface UseColorModeReturn {
-  colorMode: ColorMode;
-}
-
-export function useColorMode(): UseColorModeReturn {
-  const { resolvedTheme, forcedTheme } = useTheme();
-  const colorMode = forcedTheme || resolvedTheme;
-  return {
-    colorMode: colorMode as ColorMode,
-  };
-}

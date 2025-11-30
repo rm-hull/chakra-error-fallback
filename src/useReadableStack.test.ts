@@ -35,7 +35,7 @@ describe("useReadableStack", () => {
       () =>
         new Promise(() => {
           // Never resolves
-        })
+        }),
     );
 
     const { result } = renderHook(() => useReadableStack(error));
@@ -109,7 +109,7 @@ describe("useReadableStack", () => {
       () =>
         new Promise(() => {
           // Never resolves
-        })
+        }),
     );
 
     const { unmount } = renderHook(() => useReadableStack(error));
@@ -129,7 +129,7 @@ describe("useReadableStack", () => {
       ({ error }) => useReadableStack(error),
       {
         initialProps: { error: error1 },
-      }
+      },
     );
 
     await waitFor(() => {

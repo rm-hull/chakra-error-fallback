@@ -2,23 +2,29 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { render } from "./test/render";
 import { ErrorFallback } from "./ErrorFallback";
-import { useReadableStack } from "./useReadableStack";
+import { useReadableStack } from "./useReadableStack"; // Import the function directly
 import { vi } from "vitest";
 
-// Mock the useReadableStack hook
-vi.mock("./useReadableStack", () => ({
-  useReadableStack: vi.fn(),
-}));
+// Mock the useReadableStack hook. We'll set its implementation in beforeEach.
+vi.mock("./useReadableStack", async () => { // Use async for importActual
+  const actual = await vi.importActual<typeof import("./useReadableStack")>("./useReadableStack");
+  return {
+    ...actual, // Keep original exports if any
+    useReadableStack: vi.fn(), // Mock the specific function
+  };
+});
 
-const mockUseReadableStack = useReadableStack as vi.Mock;
+// Get a reference to the mocked function
+const mockedUseReadableStack = vi.mocked(useReadableStack);
 
 describe("ErrorFallback", () => {
   beforeEach(() => {
-    // Reset mock before each test
-    mockUseReadableStack.mockReturnValue({
+    // Reset the mock to its default implementation before each test
+    mockedUseReadableStack.mockClear();
+    mockedUseReadableStack.mockImplementation(() => ({
       stack: "Mock stack trace",
       loading: false,
-    });
+    }));
   });
 
   it("renders with a default title and error message", () => {
@@ -39,7 +45,7 @@ describe("ErrorFallback", () => {
   });
 
   it("displays 'resolving source maps…' when loading is true", () => {
-    mockUseReadableStack.mockReturnValue({ stack: "", loading: true });
+    mockedUseReadableStack.mockImplementation(() => ({ stack: "", loading: true }));
     const error = new Error("Loading Error");
     render(<ErrorFallback error={error} />);
 
@@ -53,7 +59,7 @@ describe("ErrorFallback", () => {
     const trigger = screen.getByText("Stack trace");
     const accordionItem = trigger.closest("[data-part='item']");
     const stackTraceContent = accordionItem?.querySelector(
-      "[data-part='item-content']"
+      "[data-part='item-content']",
     );
 
     // Stack trace content should be closed initially
@@ -64,7 +70,7 @@ describe("ErrorFallback", () => {
 
     // Stack trace content should now be open after waiting
     await waitFor(() =>
-      expect(stackTraceContent).toHaveAttribute("data-state", "open")
+      expect(stackTraceContent).toHaveAttribute("data-state", "open"),
     );
     expect(screen.getByText("Mock stack trace")).toBeInTheDocument();
   });

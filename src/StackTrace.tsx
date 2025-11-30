@@ -5,7 +5,7 @@ import {
   createShikiAdapter,
 } from "@chakra-ui/react";
 import type { LanguageInput } from "shiki";
-import { useColorMode } from "./components/ui/color-mode";
+import { useColorMode } from "./hooks/useColorMode"; // Updated import path
 import { createHighlighterCore } from "shiki/core";
 import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 
