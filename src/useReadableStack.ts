@@ -41,7 +41,9 @@ async function decodeStackTrace(stack: string): Promise<string> {
 
       if (pos.source) {
         const fnName = pos.name ? ` (${pos.name})` : "";
-        decoded.push(`${line}\n      → ${pos.source}:${pos.line}:${pos.column}${fnName}`);
+        decoded.push(
+          `${line}\n      → ${pos.source}:${pos.line}:${pos.column}${fnName}`,
+        );
       } else {
         decoded.push(line);
       }
