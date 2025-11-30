@@ -3,7 +3,6 @@ import { BsArrowReturnRight } from "react-icons/bs";
 
 interface CauseProps {
   error: Error;
-  seen?: Set<Error>;
 }
 
 interface InternalCauseProps {
