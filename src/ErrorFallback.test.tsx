@@ -53,7 +53,7 @@ describe("ErrorFallback", () => {
     const trigger = screen.getByText("Stack trace");
     const accordionItem = trigger.closest("[data-part='item']");
     const stackTraceContent = accordionItem?.querySelector(
-      "[data-part='item-content']"
+      "[data-part='item-content']",
     );
 
     // Stack trace content should be closed initially
@@ -64,7 +64,7 @@ describe("ErrorFallback", () => {
 
     // Stack trace content should now be open after waiting
     await waitFor(() =>
-      expect(stackTraceContent).toHaveAttribute("data-state", "open")
+      expect(stackTraceContent).toHaveAttribute("data-state", "open"),
     );
     expect(screen.getByText("Mock stack trace")).toBeInTheDocument();
   });
