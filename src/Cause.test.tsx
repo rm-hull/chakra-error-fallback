@@ -27,7 +27,7 @@ describe("Cause", () => {
     errorA.cause = errorB;
     errorB.cause = errorA;
 
-    render(<Cause error={errorA} seen={new Set()} />);
+    render(<Cause error={errorA} />);
 
     expect(screen.getByText("Error A")).toBeInTheDocument();
     expect(screen.getByText("Error B")).toBeInTheDocument();
