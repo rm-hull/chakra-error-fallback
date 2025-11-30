@@ -36,7 +36,7 @@ export default defineConfig({
         name: 'storybook',
         browser: {
           enabled: true,
-          headless: true,
+          headless: !!process.env.CI,
           provider: playwright({}),
           instances: [{
             browser: 'chromium'
