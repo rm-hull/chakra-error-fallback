@@ -20,4 +20,16 @@ describe("Cause", () => {
     expect(screen.getByText("Middle Error")).toBeInTheDocument();
     expect(screen.getByText("Inner Error")).toBeInTheDocument();
   });
+
+  it("handles cyclic errors gracefully", () => {
+    const errorA = new Error("Error A");
+    const errorB = new Error("Error B");
+    errorA.cause = errorB;
+    errorB.cause = errorA;
+
+    render(<Cause error={errorA} />);
+
+    expect(screen.getByText("Error A")).toBeInTheDocument();
+    expect(screen.getByText("Error B")).toBeInTheDocument();
+  });
 });

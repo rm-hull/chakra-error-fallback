@@ -5,18 +5,29 @@ interface CauseProps {
   error: Error;
 }
 
-export function Cause({ error }: CauseProps) {
+interface InternalCauseProps {
+  error: Error;
+  seen: Set<Error>;
+}
+
+function InternalCause({ error, seen }: InternalCauseProps) {
+  seen.add(error);
+
   return (
     <VStack alignItems="start" gap={0.5}>
       {error.message}
-      {error.cause instanceof Error && (
+      {error.cause instanceof Error && !seen.has(error.cause) && (
         <HStack alignItems="start">
           <Box mt={0.5} ml={4}>
             <BsArrowReturnRight />
           </Box>
-          <Cause error={error.cause} />
+          <InternalCause error={error.cause} seen={seen} />
         </HStack>
       )}
     </VStack>
   );
+}
+
+export function Cause({ error }: CauseProps) {
+  return <InternalCause error={error} seen={new Set()} />;
 }
