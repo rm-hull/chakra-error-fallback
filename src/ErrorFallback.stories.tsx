@@ -47,3 +47,16 @@ export const ExpandedStackTrace: Story = {
     expandStackTrace: true,
   },
 };
+
+const errorA = new Error("Error A");
+const errorB = new Error("Error B");
+errorA.cause = errorB;
+errorB.cause = errorA;
+
+export const CyclicErrors: Story = {
+  args: {
+    title: "Gracefully handle cyclic errors",
+    error: new Error("Top level error", { cause: errorA }),
+    expandStackTrace: true,
+  },
+};
