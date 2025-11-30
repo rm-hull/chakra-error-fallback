@@ -2,19 +2,19 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { render } from "./test/render";
 import { ErrorFallback } from "./ErrorFallback";
-import { useReadableStack } from "./useReadableStack";
+// import { useReadableStack } // Removed this line
 import { vi } from "vitest";
 
 // Mock the useReadableStack hook
+const mockUseReadableStack = vi.fn();
 vi.mock("./useReadableStack", () => ({
-  useReadableStack: vi.fn(),
+  useReadableStack: mockUseReadableStack,
 }));
-
-const mockUseReadableStack = useReadableStack as vi.Mock;
 
 describe("ErrorFallback", () => {
   beforeEach(() => {
-    // Reset mock before each test
+    // Reset mock before each test and set a default return value
+    mockUseReadableStack.mockClear();
     mockUseReadableStack.mockReturnValue({
       stack: "Mock stack trace",
       loading: false,
