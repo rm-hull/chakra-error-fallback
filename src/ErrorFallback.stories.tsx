@@ -58,11 +58,17 @@ export const CyclicErrors: Story = {
     const errorA = new Error("Error A");
     const errorB = new Error("Error B");
     // Create cycle
-    Object.defineProperty(errorA, "cause", { value: errorB, enumerable: false });
-    Object.defineProperty(errorB, "cause", { value: errorA, enumerable: false });
-    
+    Object.defineProperty(errorA, "cause", {
+      value: errorB,
+      enumerable: false,
+    });
+    Object.defineProperty(errorB, "cause", {
+      value: errorA,
+      enumerable: false,
+    });
+
     const error = new Error("Top level error", { cause: errorA });
-    
+
     return <ErrorFallback {...args} error={error} />;
   },
 };
