@@ -7,7 +7,7 @@ interface CauseProps {
 }
 
 export function Cause({ error, seen }: CauseProps) {
-  const nextSeen = new Set(seen);
+  const nextSeen = new Set(seen ?? []);
   nextSeen.add(error);
 
   return (
