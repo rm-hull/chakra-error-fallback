@@ -48,15 +48,21 @@ export const ExpandedStackTrace: Story = {
   },
 };
 
-const errorA = new Error("Error A");
-const errorB = new Error("Error B");
-errorA.cause = errorB;
-errorB.cause = errorA;
-
 export const CyclicErrors: Story = {
   args: {
     title: "Gracefully handle cyclic errors",
-    error: new Error("Top level error", { cause: errorA }),
+    error: new Error("Placeholder"), // Placeholder to satisfy types, overwritten in render
     expandStackTrace: true,
+  },
+  render: (args) => {
+    const errorA = new Error("Error A");
+    const errorB = new Error("Error B");
+    // Create cycle
+    Object.defineProperty(errorA, "cause", { value: errorB, enumerable: false });
+    Object.defineProperty(errorB, "cause", { value: errorA, enumerable: false });
+    
+    const error = new Error("Top level error", { cause: errorA });
+    
+    return <ErrorFallback {...args} error={error} />;
   },
 };
