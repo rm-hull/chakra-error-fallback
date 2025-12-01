@@ -157,18 +157,10 @@ jobs:
           git commit -m "Release v${{ steps.version.outputs.version }} [skip ci]"
           git push origin main
 
-      - name: Remove all token-based npm auth
-        run: rm -f .npmrc ~/.npmrc
-
-      - name: Publish (prepare via Changesets)
+      - name: Publish to npm (Trusted Publishing)
         if: steps.version.outputs.has_changes == 'true'
-        run: yarn changeset publish --no-git-tag
-
-      - name: Publish to npm with provenance (OIDC)
-        if: steps.version.outputs.has_changes == 'true'
-        run: npm publish dist --provenance --access public
+        run: yarn changeset publish
         env:
-          NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
 
       - name: Create GitHub release
