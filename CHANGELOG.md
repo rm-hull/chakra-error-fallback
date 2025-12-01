@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.9
+
+### Patch Changes
+
+- 26c859d: Keep trying to publish
+
 ## 0.0.8
 
 ### Patch Changes
