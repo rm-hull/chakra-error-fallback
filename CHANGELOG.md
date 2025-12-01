@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.10
+
+### Patch Changes
+
+- 47f2eea: Stupid fucking clankers ... THIS IS YOUR LAST CHANCE!
+
 ## 0.0.9
 
 ### Patch Changes
