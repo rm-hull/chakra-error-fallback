@@ -157,11 +157,11 @@ jobs:
           git commit -m "Release v${{ steps.version.outputs.version }} [skip ci]"
           git push origin main
 
-      - name: Publish to npm
+      - name: Publish to npm (Trusted Publishing)
         if: steps.version.outputs.has_changes == 'true'
-        run: yarn changeset publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          yarn changeset publish --no-git-tag
+          npm publish --provenance --access public
 
       - name: Create GitHub release
         if: steps.version.outputs.has_changes == 'true'
