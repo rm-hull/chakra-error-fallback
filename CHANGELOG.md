@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.12
+
+### Patch Changes
+
+- 80085c6: NPM^11
+
 ## 0.0.11
 
 ### Patch Changes
