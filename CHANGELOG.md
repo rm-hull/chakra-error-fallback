@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.11
+
+### Patch Changes
+
+- e34d9c8: Changeset issue?
+
 ## 0.0.10
 
 ### Patch Changes
