@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.8
+
+### Patch Changes
+
+- 83da95e: Trigger a new patch release
+
 ## 0.0.7
 
 ### Patch Changes
