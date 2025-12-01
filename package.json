@@ -1,6 +1,6 @@
 {
   "name": "@rm-hull/chakra-error-fallback",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A React component for standardized error fallback",
   "type": "module",
   "main": "dist/index.cjs",

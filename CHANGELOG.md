@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.6
+
+### Patch Changes
+
+- f714c81: Quell duplicate causes
+
 ## 0.0.5
 
 ### Patch Changes
