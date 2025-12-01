@@ -75,9 +75,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    env:
-      NODE_AUTH_TOKEN: ""
-      NPM_TOKEN: ""
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     concurrency:
@@ -160,11 +157,19 @@ jobs:
           git commit -m "Release v${{ steps.version.outputs.version }} [skip ci]"
           git push origin main
 
-      - name: Publish to npm (Trusted Publishing)
+      - name: Remove all token-based npm auth
+        run: rm -f .npmrc ~/.npmrc
+
+      - name: Publish (prepare via Changesets)
         if: steps.version.outputs.has_changes == 'true'
-        run: |
-          yarn changeset publish --no-git-tag
-          npm publish --provenance --access public
+        run: yarn changeset publish --no-git-tag
+
+      - name: Publish to npm with provenance (OIDC)
+        if: steps.version.outputs.has_changes == 'true'
+        run: npm publish dist --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ""
+          NPM_TOKEN: ""
 
       - name: Create GitHub release
         if: steps.version.outputs.has_changes == 'true'
