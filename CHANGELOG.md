@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.0.7
+
+### Patch Changes
+
+- aa572e9: Trusted publishing
+
 ## 0.0.6
 
 ### Patch Changes
