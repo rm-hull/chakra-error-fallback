@@ -37,7 +37,8 @@
   "author": "Richard Hull",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "peerDependencies": {
     "@chakra-ui/react": ">=3.28.0",
@@ -53,7 +54,7 @@
   "devDependencies": {
     "@chakra-ui/cli": "^3.30.0",
     "@chakra-ui/react": "^3.30.0",
-    "@changesets/cli": "^2.29.8",
+    "@changesets/cli": "patch:@changesets/cli@npm%3A2.29.8#~/.yarn/patches/@changesets-cli-npm-2.29.8-52df46efd2.patch",
     "@emotion/react": "^11.14.0",
     "@eslint/js": "^9.39.1",
     "@storybook/addon-themes": "^10.1.2",
