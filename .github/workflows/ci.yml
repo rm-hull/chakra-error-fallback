@@ -85,7 +85,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Download Storybook artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: storybook-static
           path: storybook-static/
@@ -126,7 +126,7 @@ jobs:
         run: yarn install --immutable-cache
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: dist
           path: dist/
