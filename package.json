@@ -52,8 +52,8 @@
     "source-map-js": "^1.2.1"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^3.30.0",
-    "@chakra-ui/react": "^3.30.0",
+    "@chakra-ui/cli": "^3.31.0",
+    "@chakra-ui/react": "^3.31.0",
     "@changesets/cli": "patch:@changesets/cli@npm%3A2.29.8#~/.yarn/patches/@changesets-cli-npm-2.29.8-52df46efd2.patch",
     "@emotion/react": "^11.14.0",
     "@eslint/js": "^9.39.2",
