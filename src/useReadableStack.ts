@@ -62,6 +62,10 @@ export function useReadableStack(error: unknown) {
 
   useEffect(() => {
     if (!(error instanceof Error) || !error.stack) {
+      queueMicrotask(() => {
+        setStack(undefined);
+        setLoading(false);
+      });
       return;
     }
 
