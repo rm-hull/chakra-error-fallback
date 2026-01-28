@@ -12,7 +12,7 @@ import { StackTrace } from "./StackTrace";
 
 interface ErrorFallbackProps {
   title?: string;
-  error: Error;
+  error: unknown;
   expandStackTrace?: boolean;
 }
 
@@ -37,30 +37,32 @@ export function ErrorFallback({
         </Alert.Content>
       </Alert.Root>
 
-      <Container m={5}>
-        <Accordion.Root
-          collapsible
-          variant="plain"
-          defaultValue={expandStackTrace ? ["stack"] : undefined}
-        >
-          <Accordion.Item value="stack">
-            <Accordion.ItemTrigger>
-              <Heading size="sm">
-                Stack trace
-                {loading && (
-                  <Span color="gray.500"> (resolving source maps…)</Span>
-                )}
-              </Heading>
-              <Accordion.ItemIndicator />
-            </Accordion.ItemTrigger>
-            <Accordion.ItemContent>
-              <Accordion.ItemBody>
-                <StackTrace details={stack} />
-              </Accordion.ItemBody>
-            </Accordion.ItemContent>
-          </Accordion.Item>
-        </Accordion.Root>
-      </Container>
+      {(loading || stack !== undefined) && (
+        <Container m={5}>
+          <Accordion.Root
+            collapsible
+            variant="plain"
+            defaultValue={expandStackTrace ? ["stack"] : undefined}
+          >
+            <Accordion.Item value="stack">
+              <Accordion.ItemTrigger>
+                <Heading size="sm">
+                  Stack trace
+                  {loading && (
+                    <Span color="gray.500"> (resolving source maps…)</Span>
+                  )}
+                </Heading>
+                <Accordion.ItemIndicator />
+              </Accordion.ItemTrigger>
+              <Accordion.ItemContent>
+                <Accordion.ItemBody>
+                  <StackTrace details={stack} />
+                </Accordion.ItemBody>
+              </Accordion.ItemContent>
+            </Accordion.Item>
+          </Accordion.Root>
+        </Container>
+      )}
     </Container>
   );
 }
