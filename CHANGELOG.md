@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.0
+
+### Minor Changes
+
+- 2fa8dbd: Support non-Error types in error components
+
 ## 0.0.12
 
 ### Patch Changes
