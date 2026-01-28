@@ -2,15 +2,18 @@ import { VStack, HStack, Box } from "@chakra-ui/react";
 import { BsArrowReturnRight } from "react-icons/bs";
 
 interface CauseProps {
-  error: Error;
+  error: unknown;
 }
 
-interface InternalCauseProps {
-  error: Error;
+interface InternalCauseProps extends CauseProps {
   seen: Set<Error>;
 }
 
 function InternalCause({ error, seen }: InternalCauseProps) {
+  if (!(error instanceof Error)) {
+    return <>{String(error)}</>;
+  }
+
   seen.add(error);
 
   return (

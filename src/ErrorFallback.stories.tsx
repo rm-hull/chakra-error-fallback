@@ -22,6 +22,12 @@ export const Default: Story = {
   },
 };
 
+export const StringError: Story = {
+  args: {
+    error: "String error",
+  },
+};
+
 export const CustomTitle: Story = {
   args: {
     title: "Custom error title here",

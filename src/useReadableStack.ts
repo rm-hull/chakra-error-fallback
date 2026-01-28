@@ -56,12 +56,14 @@ async function decodeStackTrace(stack: string): Promise<string> {
   return decoded.join("\n");
 }
 
-export function useReadableStack(error: Error | null) {
+export function useReadableStack(error: unknown) {
   const [stack, setStack] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!error?.stack) return;
+    if (!(error instanceof Error) || !error.stack) {
+      return;
+    }
 
     let cancelled = false;
 
