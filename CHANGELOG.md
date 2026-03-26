@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.3
+
+### Patch Changes
+
+- d869701: Adjust module defn
+
 ## 0.1.2
 
 ### Patch Changes
