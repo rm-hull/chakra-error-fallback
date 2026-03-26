@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.1
+
+### Patch Changes
+
+- eb9a048: migrate to use tsdown + typescript 6.0
+
 ## 0.1.0
 
 ### Minor Changes
