@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.2
+
+### Patch Changes
+
+- 39c51e9: Adds tsdown config
+
 ## 0.1.1
 
 ### Patch Changes
