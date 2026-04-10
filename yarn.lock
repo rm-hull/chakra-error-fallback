@@ -1978,7 +1978,7 @@ __metadata:
     globals: "npm:^17.4.0"
     jsdom: "npm:^29.0.2"
     next-themes: "npm:^0.4.6"
-    prettier: "npm:^3.8.1"
+    prettier: "npm:^3.8.2"
     react: "npm:^19.2.5"
     react-dom: "npm:^19.2.5"
     react-icons: "npm:^5.6.0"
@@ -8323,7 +8323,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.1, prettier@npm:^3.8.1":
+"prettier@npm:3.8.1":
   version: 3.8.1
   resolution: "prettier@npm:3.8.1"
   bin:
@@ -8338,6 +8338,15 @@ __metadata:
   bin:
     prettier: bin-prettier.js
   checksum: 10c0/463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "prettier@npm:3.8.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/2d64bd01d269c8dd6d8c423a2a2e1fb88230a53aac523204b327de40059ccf8bd8e6fe70b8ce6154b97ed4442e9fd878504ff8a5330f3a4f64bd13d1576f7652
   languageName: node
   linkType: hard
 
