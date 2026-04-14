@@ -90,7 +90,7 @@
     "react-dom": "^19.2.5",
     "resize-observer-polyfill": "^1.5.1",
     "storybook": "^10.3.5",
-    "tsdown": "^0.21.7",
+    "tsdown": "^0.21.8",
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
     "vite": "^8.0.8",
