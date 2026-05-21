@@ -97,5 +97,5 @@
     "vitest": "^4.1.7",
     "vitest-axe": "^0.1.0"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "yarn@4.15.0"
 }
