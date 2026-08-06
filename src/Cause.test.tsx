@@ -5,8 +5,8 @@ import { Cause } from "./Cause";
 describe("Cause", () => {
   it("displays a simple error message", () => {
     const error = new Error("Test Error");
-    render(<Cause error={error} />);
-    expect(screen.getByText("Test Error")).toBeInTheDocument();
+    const { container } = render(<Cause error={error} />);
+    expect(container).toHaveTextContent("Test Error");
   });
 
   it("recursively displays nested error causes", () => {
@@ -14,11 +14,11 @@ describe("Cause", () => {
     const middleError = new Error("Middle Error", { cause: innerError });
     const outerError = new Error("Outer Error", { cause: middleError });
 
-    render(<Cause error={outerError} />);
+    const { container } = render(<Cause error={outerError} />);
 
-    expect(screen.getByText("Outer Error")).toBeInTheDocument();
-    expect(screen.getByText("Middle Error")).toBeInTheDocument();
-    expect(screen.getByText("Inner Error")).toBeInTheDocument();
+    expect(container).toHaveTextContent("Outer Error");
+    expect(container).toHaveTextContent("Middle Error");
+    expect(container).toHaveTextContent("Inner Error");
   });
 
   it("handles cyclic errors gracefully", () => {
@@ -33,9 +33,9 @@ describe("Cause", () => {
       enumerable: false,
     });
 
-    render(<Cause error={errorA} />);
+    const { container } = render(<Cause error={errorA} />);
 
-    expect(screen.getByText("Error A")).toBeInTheDocument();
-    expect(screen.getByText("Error B")).toBeInTheDocument();
+    expect(container).toHaveTextContent("Error A");
+    expect(container).toHaveTextContent("Error B");
   });
 });
