@@ -9,4 +9,3 @@ export function ColorModeProvider(props: ThemeProviderProps) {
     <ThemeProvider attribute="class" disableTransitionOnChange {...props} />
   );
 }
-

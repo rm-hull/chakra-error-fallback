@@ -1,4 +1,4 @@
-import { screen, waitFor } from "@testing-library/react";
+import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { render } from "./test/render";
 import { ErrorFallback } from "./ErrorFallback";
@@ -6,8 +6,12 @@ import { useReadableStack } from "./useReadableStack"; // Import the function di
 import { vi } from "vitest";
 
 // Mock the useReadableStack hook. We'll set its implementation in beforeEach.
-vi.mock("./useReadableStack", async () => { // Use async for importActual
-  const actual = await vi.importActual<typeof import("./useReadableStack")>("./useReadableStack");
+vi.mock("./useReadableStack", async () => {
+  // Use async for importActual
+  const actual =
+    await vi.importActual<typeof import("./useReadableStack")>(
+      "./useReadableStack",
+    );
   return {
     ...actual, // Keep original exports if any
     useReadableStack: vi.fn(), // Mock the specific function
@@ -38,14 +42,19 @@ describe("ErrorFallback", () => {
 
   it("renders with a custom title", () => {
     const error = new Error("Another Error");
-    const { container } = render(<ErrorFallback error={error} title="Custom Error Title" />);
+    const { container } = render(
+      <ErrorFallback error={error} title="Custom Error Title" />,
+    );
 
     expect(container).toHaveTextContent("Custom Error Title");
     expect(container).toHaveTextContent("Another Error");
   });
 
   it("displays 'resolving source maps…' when loading is true", () => {
-    mockedUseReadableStack.mockImplementation(() => ({ stack: "", loading: true }));
+    mockedUseReadableStack.mockImplementation(() => ({
+      stack: "",
+      loading: true,
+    }));
     const error = new Error("Loading Error");
     const { container } = render(<ErrorFallback error={error} />);
 
@@ -77,7 +86,9 @@ describe("ErrorFallback", () => {
 
   it("displays the stack trace immediately when expandStackTrace is true", async () => {
     const error = new Error("Expanded Stack Trace Error");
-    const { container } = render(<ErrorFallback error={error} expandStackTrace={true} />);
+    const { container } = render(
+      <ErrorFallback error={error} expandStackTrace={true} />,
+    );
 
     await waitFor(() => {
       expect(container).toHaveTextContent("Mock stack trace");

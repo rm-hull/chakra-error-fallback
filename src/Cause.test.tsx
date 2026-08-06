@@ -1,4 +1,3 @@
-import { screen } from "@testing-library/react";
 import { render } from "./test/render";
 import { Cause } from "./Cause";
 

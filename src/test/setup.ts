@@ -7,24 +7,23 @@ import "vitest-axe/extend-expect";
 const { window } = new JSDOM();
 
 // Mock getComputedStyle on the JSDOM window object
-Object.defineProperty(window, 'getComputedStyle', {
+Object.defineProperty(window, "getComputedStyle", {
   writable: true,
   value: vi.fn((_elt: Element) => {
     void _elt; // Explicitly mark as unused
     return {
       getPropertyValue: vi.fn((_prop: string) => {
         void _prop; // Explicitly mark as unused
-        return '';
+        return "";
       }),
-      width: '0px',
-      height: '0px',
+      width: "0px",
+      height: "0px",
     } as CSSStyleDeclaration; // Cast to CSSStyleDeclaration to satisfy types
   }), // Closing parenthesis for vi.fn()
 });
 
 // ResizeObserver mock
 vi.stubGlobal("ResizeObserver", ResizeObserver);
-
 
 // matchMedia mock
 Object.defineProperty(window, "matchMedia", {
@@ -42,7 +41,8 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 // IntersectionObserver mock
-class MockIntersectionObserver implements IntersectionObserver { // Explicitly implement
+class MockIntersectionObserver implements IntersectionObserver {
+  // Explicitly implement
   disconnect = vi.fn();
   observe = vi.fn();
   takeRecords = vi.fn();
@@ -51,22 +51,28 @@ class MockIntersectionObserver implements IntersectionObserver { // Explicitly i
   rootMargin = "";
   thresholds = [];
 
-  constructor(_callback: IntersectionObserverCallback, _options?: IntersectionObserverInit) {
+  constructor(
+    _callback: IntersectionObserverCallback,
+    _options?: IntersectionObserverInit,
+  ) {
     void _callback;
     void _options;
     // We can store callback and options if needed for advanced testing
   }
+  scrollMargin: string;
 }
 // @ts-expect-error: `vi.stubGlobal` expects a constructor type for IntersectionObserver, but our mock class might not fully match all properties or methods of the native IntersectionObserver constructor, leading to a type mismatch.
-vi.stubGlobal("IntersectionObserver", MockIntersectionObserver as typeof IntersectionObserver);
-
+vi.stubGlobal(
+  "IntersectionObserver",
+  MockIntersectionObserver as typeof IntersectionObserver,
+);
 
 // Scroll Methods mock
-Object.defineProperty(window.Element.prototype, 'scrollTo', {
+Object.defineProperty(window.Element.prototype, "scrollTo", {
   writable: true,
   value: vi.fn(),
 });
-Object.defineProperty(window.Element.prototype, 'scrollIntoView', {
+Object.defineProperty(window.Element.prototype, "scrollIntoView", {
   writable: true,
   value: vi.fn(),
 });
