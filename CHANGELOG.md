@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.4
+
+### Patch Changes
+
+- bd07937: Bump dependencies
+
 ## 0.1.3
 
 ### Patch Changes
