@@ -30,24 +30,26 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - uses: pnpm/action-setup@v6
+
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: "yarn"
+          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
         continue-on-error: true
-        run: yarn lint
+        run: pnpm lint
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Run tests
-        run: yarn test:coverage
+        run: pnpm test:coverage
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
@@ -61,7 +63,7 @@ jobs:
         continue-on-error: true
 
       - name: Build Storybook
-        run: yarn build-storybook
+        run: pnpm build-storybook
 
       - name: Upload Storybook artifacts
         uses: actions/upload-artifact@v7
@@ -113,17 +115,19 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - uses: pnpm/action-setup@v6
+
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: "yarn"
+          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install npm version supporting Trusted Publishing
         run: npm install --global npm@^11
 
       - name: Install dependencies
-        run: yarn install --immutable-cache
+        run: pnpm install --frozen-lockfile
 
       - name: Download build artifacts
         uses: actions/download-artifact@v8
@@ -144,7 +148,7 @@ jobs:
       - name: Version packages
         id: version
         run: |
-          yarn changeset version
+          pnpm changeset version
           if [[ -n $(git status --porcelain) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             VERSION=$(node -p "require('./package.json').version")
@@ -162,7 +166,7 @@ jobs:
 
       - name: Publish to npm (Trusted Publishing)
         if: steps.version.outputs.has_changes == 'true'
-        run: yarn changeset publish
+        run: pnpm changeset publish
         env:
           NPM_TOKEN: ""
 

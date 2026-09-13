@@ -4,6 +4,15 @@ import ResizeObserver from "resize-observer-polyfill";
 import { vi } from "vitest";
 import "vitest-axe/extend-expect";
 
+// Mock next-themes to prevent the injected script tag warning in React 19 / jsdom test environment
+vi.mock("next-themes", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next-themes")>();
+  return {
+    ...actual,
+    ThemeProvider: ({ children }: { children: React.ReactNode }) => children,
+  };
+});
+
 const { window } = new JSDOM();
 
 // Mock getComputedStyle on the JSDOM window object

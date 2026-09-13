@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ErrorFallback } from "./ErrorFallback";
 import { Provider } from "./components/ui/provider";
 
-const meta = {
+const meta: Meta<typeof ErrorFallback> = {
   component: ErrorFallback,
   decorators: [
     (Story) => (
