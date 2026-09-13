@@ -14,12 +14,18 @@ function InternalCause({ error, seen }: InternalCauseProps) {
     return <>{String(error)}</>;
   }
 
+  // Check for cyclic errors before rendering any content
+  if (seen.has(error)) {
+    return <em>(cyclic error detected)</em>;
+  }
+
+  // Mark this error as seen immediately before rendering
   seen.add(error);
 
   return (
     <VStack alignItems="start" gap={0.5}>
       {error.message}
-      {error.cause instanceof Error && !seen.has(error.cause) && (
+      {error.cause instanceof Error && (
         <HStack alignItems="start">
           <Box mt={0.5} ml={4}>
             <BsArrowReturnRight />
