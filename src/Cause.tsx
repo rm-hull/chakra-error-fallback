@@ -16,7 +16,11 @@ function InternalCause({ error, seen }: InternalCauseProps) {
 
   // Check for cyclic errors before rendering any content
   if (seen.has(error)) {
-    return <em>(cyclic error detected)</em>;
+    return (
+      <span>
+        {error.message || "Error"} <em>(cyclic error detected)</em>
+      </span>
+    );
   }
 
   // Mark this error as seen immediately before rendering
