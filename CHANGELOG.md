@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.5
+
+### Patch Changes
+
+- cc411e9: Prevent infinite loops on cycles; various package dependency updates
+
 ## 0.1.4
 
 ### Patch Changes
