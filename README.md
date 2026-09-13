@@ -64,7 +64,7 @@ This project uses [**Changesets**](https://github.com/changesets/changesets) to 
     Make your changes, then run:
 
     ```bash
-    yarn changeset
+    pnpm changeset
     ```
 
     You’ll be prompted to:
