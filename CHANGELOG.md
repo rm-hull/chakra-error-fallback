@@ -1,5 +1,11 @@
 # @rm-hull/chakra-error-fallback
 
+## 0.1.6
+
+### Patch Changes
+
+- d60baa0: Show cyclic error
+
 ## 0.1.5
 
 ### Patch Changes
