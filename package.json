@@ -54,7 +54,7 @@
   "devDependencies": {
     "@chakra-ui/cli": "^3.37.0",
     "@chakra-ui/react": "^3.37.0",
-    "@changesets/cli": "^3.0.2",
+    "@changesets/cli": "^3.0.3",
     "@emotion/react": "^11.14.0",
     "@eslint/js": "^10.0.1",
     "@shikijs/themes": "^4.4.3",
